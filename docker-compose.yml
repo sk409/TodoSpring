@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  database:
+    build: docker/database
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+  todo:
+    build: .
+    tty: true
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
